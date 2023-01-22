@@ -1,0 +1,117 @@
+:root {
+  --m1: #f0f;
+  --m2: #101;
+  --select-bg: #f0f;
+  --select-color: #000;
+  --font-size: 1.5rem;
+  --line-height: 1.5;
+  --h1: 4.5em;
+}
+:root ::selection {
+  background: var(--select-bg);
+  color: var(--select-color);
+}
+html {
+  background-color: var(--m2);
+  color: var(--m1);
+}
+body {
+  background-image: linear-gradient(to bottom, var(--m1) 100vh, #f0f0 100vh);
+  font: var(--font-size) space-mono, monospace;
+  margin: 0;
+  padding-top: 100vh;
+}
+body::-webkit-scrollbar {
+  background: var(--m2);
+}
+body::-webkit-scrollbar-thumb {
+  background: var(--m1);
+}
+dfn[title] {
+  text-decoration: underline dotted;
+}
+dfn[title],
+abbr[title] {
+  cursor: help;
+}
+[title]:focus {
+  color: #f9f;
+}
+header {
+  --select-bg: #000;
+  --select-color: #f0f;
+  align-items: flex-end;
+  background-color: var(--m1);
+  color: var(--m2);
+  display: flex;
+  margin-top: calc(-50vh - var(--h1));
+  padding: 0 1.5rem 0.5ex;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+main {
+  line-height: var(--line-height);
+  max-width: 80ch;
+  padding: 50vh calc(1em + env(safe-area-inset-left)) 1em
+    calc(1em + env(safe-area-inset-right));
+}
+h1 {
+  font-size: var(--h1);
+  line-height: 1.5ex;
+  margin: 0;
+}
+a {
+  color: #f8f;
+}
+a:hover {
+  color: #fff;
+}
+footer {
+  font-size: 0.875rem;
+  line-height: 1.25;
+  padding: 1.5rem;
+}
+@media screen and (min-width: 0) and (max-width: 28rem) {
+  :root {
+    --font-size: 1rem;
+  }
+  h2 {
+    margin-top: 2em;
+  }
+}
+
+/* Thank you to HK (https://codepen.io/hershkirsh/pen/wvamaGw) */
+
+@media (pointer: coarse), (hover: none) {
+  [title] {
+    position: relative;
+    display: inline-flex;
+  }
+  [title]:focus {
+    outline: none;
+  }
+  [title]:focus::after {
+    backdrop-filter: blur(2px);
+    background-color: #3033;
+    color: #f9f;
+    content: attr(title);
+    font-size: 0.67rem;
+    font-weight: 400;
+    line-height: 1.25;
+    padding: 0.5em;
+    position: absolute;
+    width: fit-content;
+    top: 90%;
+    z-index: 10;
+  }
+  /* idk if this is a chrome on android thing or what
+  [tabindex],
+  a {
+    font-size: calc(1em / 0.9);
+  }
+  h2[tabindex] {
+    font-size: 1.5em;
+  }
+  */
+}
